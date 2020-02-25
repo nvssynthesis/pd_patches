@@ -1,0 +1,393 @@
+#N canvas 47 432 803 577 10;
+#X text 1182 98 1 uniformity;
+#X text 1182 138 3 random;
+#X text 1182 158 4 complexity;
+#X text 1182 118 2 repitition;
+#X text 1169 33 3 cells -> 2^3=8 possible input and output states;
+#X text 1168 54 = 2^2^3 = 2^8 = 256 possible rules;
+#X text 1169 76 256 rules categorized into:;
+#X text 1171 187 transition rule N defined with transition table:;
+#X obj 1173 13 text define -k CA_Notes;
+#A set 3 cells -> 2^3=8 possible input and output states = 2^2^3 =
+2^8 = 256 possible rules \; 256 rules categorized into: \; 1 uniformity
+\; 2 repitition \; 3 random \; 4 complexity \; transition rule N defined
+with transition table: \; 111 | 110 | 101 | 100 | O11 | O10 | OO1 |
+OO0 \; 0...|.1...|.0...|.1...|.1...|.1...|.0...|.1... \; \; this would
+be rule #93 \;;
+#X floatatom 416 39 10 0 4.29497e+09 0 - - -;
+#X text 310 44 rule #;
+#X text 1174 216 111 | 110 | 101 | 100 | O11 | O10 | OO1 | OO0;
+#X text 1176 247 ..0 | ..1 | ..0 | ..1 | ..0 | ..0 | ..1 | ..1;
+#X text 817 212 -get state of 3 adjacent cells;
+#X text 816 252 -set state of center cell;
+#X text 817 192 -set rule #;
+#X text 817 232 -COMPARE WITH RULE...;
+#X obj 12 9 bng 20 250 50 0 empty empty update-state 23 10 0 10 -203904
+-1 -1;
+#X obj 302 67 s GLOBAL_RULE;
+#X text 1113 247 rule 83:;
+#X obj 314 26 inlet;
+#X obj 185 17 inlet;
+#X text 197 0 BANG IN;
+#X text 304 6 SET RULE;
+#X text 820 26 2-dimensional CA.;
+#X text 821 47 5 neightbors per cell:;
+#X obj 991 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 991 30 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 1011 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 971 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 991 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 822 89 using k=2 \, i.e. each cell takes a binary value.;
+#X text 816 121 5 neighbors -> 2^5 possible input/output states;
+#X text 815 142 2^2^5 = 2^32 = 4.29497e+09 possible rules...;
+#X text 818 314 Class-2 yield separated periodic structures.;
+#X text 818 331 Class-3 cellular automata exhibit chaotic behavior
+\, and yield aperiodic patterns. Small changes in initial states usually
+lead to linearly increasing regions of change.;
+#X text 818 382 Class-4 cellular automata exhibit complicated localized
+and propagating structures.;
+#X text 818 296 Class 1: evolve to homogeneous final states.;
+#X text 818 412 -Wolfram (1985);
+#X text 602 212 j;
+#X text 602 190 ^;
+#X text 602 198 |;
+#X text 602 226 |;
+#X text 602 236 v;
+#X text 357 301 <–i–>;
+#X text 194 115 a;
+#X text 200 109 (t+1);
+#X text 203 125 i \, j;
+#X text 236 119 = ø[a;
+#X text 271 125 i \, j;
+#X text 268 109 (t);
+#X text 302 119 \, a;
+#X text 320 109 (t);
+#X text 323 125 i \, j+1;
+#X text 362 119 \, a;
+#X text 380 109 (t);
+#X text 383 125 i+1 \, j;
+#X text 422 119 \, a;
+#X text 440 109 (t);
+#X text 443 125 i \, j-1;
+#X text 483 119 \, a;
+#X text 501 109 (t);
+#X text 504 125 i-1 \, j;
+#X text 543 119 ];
+#X obj 282 367 change;
+#X obj 282 433 rparallelize;
+#X obj 282 407 serialize;
+#X obj 282 344 r GLOBAL_RULE;
+#X obj 282 386 dec2bin_32bit;
+#X text 366 385 this encodes a decimal rule;
+#X obj 282 463 array set ruleSequence;
+#X obj 136 421 array define cells 25;
+#X obj 724 8 loadbang;
+#X obj 665 72 s loads;
+#X obj 724 29 t b b;
+#X obj 12 33 tgl 20 0 cell00 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 9 219 array get cells;
+#X obj 9 240 list split 5;
+#X obj 9 261 unpack f f f f f;
+#X obj 9 301 unpack f f f f f;
+#X obj 12 135 bng 20 250 50 0 seedCells empty seedCells 23 10 0 10
+-4034 -1 -1;
+#X obj 32 33 tgl 20 0 cell10 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 52 33 tgl 20 0 cell20 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 72 33 tgl 20 0 cell30 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 33 tgl 20 0 cell40 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 12 53 tgl 20 0 cell01 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 32 53 tgl 20 0 cell11 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 52 53 tgl 20 0 cell21 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 72 53 tgl 20 0 cell31 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 53 tgl 20 0 cell41 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 9 346 unpack f f f f f;
+#X obj 12 73 tgl 20 0 cell02 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 32 73 tgl 20 0 cell12 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 52 73 tgl 20 0 cell22 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 72 73 tgl 20 0 cell32 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 73 tgl 20 0 cell42 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 9 280 list split 5;
+#X obj 9 320 list split 5;
+#X obj 9 396 unpack f f f f f;
+#X obj 12 93 tgl 20 0 cell03 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 32 93 tgl 20 0 cell13 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 52 93 tgl 20 0 cell23 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 72 93 tgl 20 0 cell33 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 93 tgl 20 0 cell43 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 9 370 list split 5;
+#X obj 9 446 unpack f f f f f;
+#X obj 72 113 tgl 20 0 cell34 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 113 tgl 20 0 cell44 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 9 420 list split 5;
+#X obj 12 113 tgl 20 0 cell04 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 32 113 tgl 20 0 cell14 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 52 113 tgl 20 0 cell24 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 473 1680 555 seeding 0;
+#X obj 380 30 r seedCells;
+#X obj 1011 189 f;
+#X obj 1071 189 f;
+#X obj 1131 189 f;
+#X obj 1191 189 f;
+#X obj 1025 164 r cell13;
+#X obj 1086 164 r cell23;
+#X obj 1146 164 r cell33;
+#X obj 1206 164 r cell43;
+#X obj 1271 188 f;
+#X obj 1331 188 f;
+#X obj 1391 188 f;
+#X obj 1451 188 f;
+#X obj 1511 188 f;
+#X obj 1286 163 r cell04;
+#X obj 1345 163 r cell14;
+#X obj 1406 163 r cell24;
+#X obj 1466 163 r cell34;
+#X obj 1526 163 r cell44;
+#X obj 193 65 t b b b b b b b b b b b b b b b b b b b b b b b b b;
+#X obj 32 163 r cell00;
+#X obj 17 188 f;
+#X obj 77 188 f;
+#X obj 92 163 r cell10;
+#X obj 137 188 f;
+#X obj 152 163 r cell20;
+#X obj 197 188 f;
+#X obj 212 163 r cell30;
+#X obj 257 188 f;
+#X obj 272 163 r cell40;
+#X obj 327 192 f;
+#X obj 387 192 f;
+#X obj 447 192 f;
+#X obj 507 192 f;
+#X obj 567 192 f;
+#X obj 342 167 r cell01;
+#X obj 402 167 r cell11;
+#X obj 462 167 r cell21;
+#X obj 522 167 r cell31;
+#X obj 582 167 r cell41;
+#X obj 639 186 f;
+#X obj 699 186 f;
+#X obj 759 186 f;
+#X obj 819 186 f;
+#X obj 879 186 f;
+#X obj 654 161 r cell02;
+#X obj 714 161 r cell12;
+#X obj 774 161 r cell22;
+#X obj 834 161 r cell32;
+#X obj 894 161 r cell42;
+#X obj 951 189 f;
+#X obj 966 164 r cell03;
+#X obj 286 412 pack f f f f f f f f f f f f f f f f f f f f f f f f
+f;
+#X obj 238 470 array set cells;
+#X connect 0 0 19 0;
+#X connect 1 0 52 16;
+#X connect 2 0 52 17;
+#X connect 3 0 52 18;
+#X connect 4 0 52 19;
+#X connect 5 0 1 1;
+#X connect 6 0 2 1;
+#X connect 7 0 3 1;
+#X connect 8 0 4 1;
+#X connect 9 0 52 20;
+#X connect 10 0 52 21;
+#X connect 11 0 52 22;
+#X connect 12 0 52 23;
+#X connect 13 0 52 24;
+#X connect 14 0 9 1;
+#X connect 15 0 10 1;
+#X connect 16 0 11 1;
+#X connect 17 0 12 1;
+#X connect 18 0 13 1;
+#X connect 19 0 21 0;
+#X connect 19 1 22 0;
+#X connect 19 2 24 0;
+#X connect 19 3 26 0;
+#X connect 19 4 28 0;
+#X connect 19 5 30 0;
+#X connect 19 6 31 0;
+#X connect 19 7 32 0;
+#X connect 19 8 33 0;
+#X connect 19 9 34 0;
+#X connect 19 10 40 0;
+#X connect 19 11 41 0;
+#X connect 19 12 42 0;
+#X connect 19 13 43 0;
+#X connect 19 14 44 0;
+#X connect 19 15 50 0;
+#X connect 19 16 1 0;
+#X connect 19 17 2 0;
+#X connect 19 18 3 0;
+#X connect 19 19 4 0;
+#X connect 19 20 9 0;
+#X connect 19 21 10 0;
+#X connect 19 22 11 0;
+#X connect 19 23 12 0;
+#X connect 19 24 13 0;
+#X connect 20 0 21 1;
+#X connect 21 0 52 0;
+#X connect 22 0 52 1;
+#X connect 23 0 22 1;
+#X connect 24 0 52 2;
+#X connect 25 0 24 1;
+#X connect 26 0 52 3;
+#X connect 27 0 26 1;
+#X connect 28 0 52 4;
+#X connect 29 0 28 1;
+#X connect 30 0 52 5;
+#X connect 31 0 52 6;
+#X connect 32 0 52 7;
+#X connect 33 0 52 8;
+#X connect 34 0 52 9;
+#X connect 35 0 30 1;
+#X connect 36 0 31 1;
+#X connect 37 0 32 1;
+#X connect 38 0 33 1;
+#X connect 39 0 34 1;
+#X connect 40 0 52 10;
+#X connect 41 0 52 11;
+#X connect 42 0 52 12;
+#X connect 43 0 52 13;
+#X connect 44 0 52 14;
+#X connect 45 0 40 1;
+#X connect 46 0 41 1;
+#X connect 47 0 42 1;
+#X connect 48 0 43 1;
+#X connect 49 0 44 1;
+#X connect 50 0 52 15;
+#X connect 51 0 50 1;
+#X connect 52 0 53 0;
+#X restore 136 447 pd seeding;
+#X msg 9 193 0;
+#X obj 9 167 r updateState;
+#X obj 185 37 s updateState;
+#X obj 159 156 cell2D 0 0;
+#X obj 249 157 cell2D 1 0;
+#X obj 339 156 cell2D 2 0;
+#X obj 429 156 cell2D 3 0;
+#X obj 519 156 cell2D 4 0;
+#X obj 159 186 cell2D 0 1;
+#X obj 249 187 cell2D 1 1;
+#X obj 339 186 cell2D 2 1;
+#X obj 429 186 cell2D 3 1;
+#X obj 519 186 cell2D 4 1;
+#X obj 159 216 cell2D 0 2;
+#X obj 249 217 cell2D 1 2;
+#X obj 339 216 cell2D 2 2;
+#X obj 429 216 cell2D 3 2;
+#X obj 519 216 cell2D 4 2;
+#X obj 159 246 cell2D 0 3;
+#X obj 249 247 cell2D 1 3;
+#X obj 339 246 cell2D 2 3;
+#X obj 429 246 cell2D 3 3;
+#X obj 519 246 cell2D 4 3;
+#X obj 159 276 cell2D 0 4;
+#X obj 249 277 cell2D 1 4;
+#X obj 339 276 cell2D 2 4;
+#X obj 429 276 cell2D 3 4;
+#X obj 519 276 cell2D 4 4;
+#X obj 282 493 array define ruleSequence 32;
+#X msg 491 15 143954;
+#X msg 493 37 50224;
+#X msg 500 67 15822;
+#X msg 726 70 \; J 5 \; I 5;
+#X obj 39 515 outlet;
+#X obj 79 515 outlet;
+#X obj 119 515 outlet;
+#X obj 159 515 outlet;
+#X obj 199 515 outlet;
+#X obj 139 43 r loads;
+#X msg 139 64 1;
+#X obj 139 85 t b f;
+#X connect 9 0 18 0;
+#X connect 17 0 115 0;
+#X connect 20 0 18 0;
+#X connect 21 0 115 0;
+#X connect 64 0 68 0;
+#X connect 65 0 70 0;
+#X connect 66 0 65 0;
+#X connect 66 1 65 1;
+#X connect 66 2 65 2;
+#X connect 67 0 64 0;
+#X connect 68 0 66 0;
+#X connect 72 0 74 0;
+#X connect 74 0 73 0;
+#X connect 74 1 145 0;
+#X connect 76 0 77 0;
+#X connect 77 0 78 0;
+#X connect 77 0 146 0;
+#X connect 77 1 96 0;
+#X connect 78 0 75 0;
+#X connect 78 1 81 0;
+#X connect 78 2 82 0;
+#X connect 78 3 83 0;
+#X connect 78 4 84 0;
+#X connect 79 0 85 0;
+#X connect 79 1 86 0;
+#X connect 79 2 87 0;
+#X connect 79 3 88 0;
+#X connect 79 4 89 0;
+#X connect 90 0 91 0;
+#X connect 90 1 92 0;
+#X connect 90 2 93 0;
+#X connect 90 3 94 0;
+#X connect 90 4 95 0;
+#X connect 96 0 79 0;
+#X connect 96 0 147 0;
+#X connect 96 1 97 0;
+#X connect 97 0 90 0;
+#X connect 97 0 148 0;
+#X connect 97 1 104 0;
+#X connect 98 0 99 0;
+#X connect 98 1 100 0;
+#X connect 98 2 101 0;
+#X connect 98 3 102 0;
+#X connect 98 4 103 0;
+#X connect 104 0 98 0;
+#X connect 104 0 149 0;
+#X connect 104 1 108 0;
+#X connect 105 0 109 0;
+#X connect 105 1 110 0;
+#X connect 105 2 111 0;
+#X connect 105 3 106 0;
+#X connect 105 4 107 0;
+#X connect 108 0 105 0;
+#X connect 108 0 150 0;
+#X connect 113 0 76 0;
+#X connect 114 0 113 0;
+#X connect 142 0 9 0;
+#X connect 143 0 9 0;
+#X connect 144 0 9 0;
+#X connect 151 0 152 0;
+#X connect 152 0 153 0;
+#X connect 153 0 80 0;
+#X connect 153 1 93 0;
+#X coords 0 -1 1 1 110 150 2 7 7;

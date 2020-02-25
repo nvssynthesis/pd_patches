@@ -1,0 +1,18 @@
+#N canvas 903 260 437 553 10;
+#X obj 78 30 inlet;
+#X obj 146 152 t l l;
+#X obj 146 189 list split 1;
+#X obj 241 188 list split 1;
+#X obj 78 112 t b l b;
+#X obj 241 218 outlet;
+#X obj 296 130 outlet;
+#X obj 78 227 outlet;
+#X text 136 16 a subpatch of Miller's;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 1 1 0;
+#X connect 3 0 5 0;
+#X connect 4 0 7 0;
+#X connect 4 1 1 0;
+#X connect 4 2 6 0;

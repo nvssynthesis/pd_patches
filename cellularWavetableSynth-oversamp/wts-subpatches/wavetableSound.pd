@@ -1,0 +1,14 @@
+#N canvas 224 276 459 264 12;
+#X obj 59 188 outlet~;
+#X text 162 9 wave index (0 - 1);
+#X obj 165 40 inlet~;
+#X obj 59 157 readWavetable;
+#X obj 59 128 phasor~ 100;
+#X obj 59 93 mtof;
+#X obj 58 35 inlet;
+#X text 56 11 midi note #;
+#X connect 2 0 3 1;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;

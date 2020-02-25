@@ -1,0 +1,341 @@
+#N canvas 1105 28 1106 836 12;
+#X declare -path wts-subpatches;
+#X declare -lib wts-externals;
+#X obj 748 548 openpanel;
+#X obj 748 656 soundfiler;
+#X obj 748 603 list append;
+#X msg 748 575 read -resize \$1;
+#X obj 748 629 route list;
+#X obj 748 525 t b a;
+#X obj 288 592 vudu.outs~;
+#X msg 748 503 wave;
+#X obj 13 580 loadbang;
+#X obj 196 158 vsl 10 100 10 10000 1 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 206 158 vsl 10 100 10 10000 1 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 216 158 vsl 10 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 226 158 vsl 10 100 10 10000 1 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 318 158 vsl 10 100 10 10000 1 0 empty a-atk-sl empty 0 -9 0
+10 -262144 -1 -1 2307 1;
+#X obj 328 158 vsl 10 100 10 10000 1 0 empty a-dec-sl empty 0 -9 0
+10 -262144 -1 -1 0 1;
+#X obj 338 158 vsl 10 100 0 1 0 0 empty a-sus-sl empty 0 -9 0 10 -262144
+-1 -1 9900 1;
+#X obj 348 158 vsl 10 100 10 10000 1 0 empty a-rel-sl empty 0 -9 0
+10 -262144 -1 -1 2307 1;
+#X obj 36 158 vsl 10 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4000 1;
+#X obj 166 158 vsl 10 100 0.01 1.01 0 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array window 1024 float 3;
+#A 0 0 0.00116158 0.00464088 0.0104218 0.0184774 0.0287703 0.0412527
+0.0558666 0.072544 0.0912075 0.11177 0.134137 0.158204 0.183858 0.210982
+0.239449 0.269126 0.299875 0.331555 0.364017 0.397111 0.430683 0.464578
+0.498636 0.532701 0.566615 0.600218 0.633356 0.665875 0.697622 0.728452
+0.75822 0.786788 0.814024 0.839801 0.863999 0.886505 0.907216 0.926035
+0.942874 0.957656 0.970311 0.980781 0.989017 0.994981 0.998645 0.999993
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 0.999993 0.998645 0.994981 0.989017 0.980781
+0.970311 0.957656 0.942874 0.926035 0.907216 0.886505 0.863999 0.839801
+0.814024 0.786788 0.75822 0.728452 0.697622 0.665875 0.633356 0.600218
+0.566615;
+#A 1000 0.532701 0.498636 0.464578 0.430683 0.397111 0.364017 0.331555
+0.299875 0.269126 0.239449 0.210982 0.183858 0.158204 0.134137 0.11177
+0.0912075 0.072544 0.0558666 0.0412527 0.0287703 0.0184774 0.0104218
+0.00464088 0.00116158;
+#X coords 0 1 1024 0 100 70 1 0 0;
+#X restore 427 596 graph;
+#X obj 533 646 vudu.tukeywin;
+#X floatatom 533 624 5 0 1 2 - - -;
+#X obj 533 598 r alpha;
+#X text 443 689 this needs to be a concatenated wavetable \, for instance
+8 waves of 512 samples each = 1 4096 sample wavetable.;
+#X obj 986 678 s scaleUpdate;
+#X obj 850 648 text define -k scale;
+#A set 100 \; 300 \; 500 \; 700 \; 800 \; 1500 \; 1700 \; 1902 \;;
+#X msg 227 750 start;
+#X msg 227 776 stop;
+#X obj 288 771 writesf~ 2;
+#X obj 196 300 s w-idx-adsr;
+#X obj 318 300 s amp-adsr;
+#X obj 36 277 s ofst;
+#X obj 166 353 s envdpth;
+#X obj 90 158 vsl 10 100 0.1 100 1 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 100 158 vsl 10 100 0.01 1.01 1 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 90 286 s lfo-f;
+#X obj 100 306 s lfo-d;
+#X obj 506 147 cellular-automata-5x5;
+#X msg 794 170 50224;
+#X floatatom 735 254 10 0 0 0 - - -;
+#X obj 506 97 tgl 15 0 empty seq-go empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 506 120 metro 120;
+#X obj 997 623 loadbang;
+#X floatatom 332 435 5 0 0 0 - - -;
+#X floatatom 375 435 5 0 0 0 - - -;
+#X floatatom 471 434 5 0 0 0 - - -;
+#X floatatom 513 436 5 0 0 0 - - -;
+#X floatatom 614 436 5 0 0 0 - - -;
+#X floatatom 654 436 5 0 0 0 - - -;
+#X floatatom 582 98 5 0 0 0 - - -;
+#X msg 745 76 16668;
+#X msg 739 137 16692;
+#X msg 743 169 16880;
+#X msg 741 199 21051;
+#X msg 736 109 34021;
+#X obj 100 266 - 0.01;
+#X obj 850 619 array define -k wave;
+#X obj 289 491 thru;
+#X obj 166 329 - 0.01;
+#X floatatom 419 435 5 0 100 0 - - -;
+#X msg 997 647 updated;
+#X floatatom 693 436 5 0 100 0 - - -;
+#X msg 695 74 15835;
+#X obj 46 158 vsl 10 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 26 307 s vc-ofst;
+#X obj 826 319 5bit-dac;
+#X obj 926 319 5bit-dac;
+#X obj 826 358 pick5;
+#X obj 825 424 s amp-slow;
+#X obj 903 456 s w-idx-slow;
+#X obj 926 358 pick5;
+#X obj 332 386 unpack f f f f f f f f;
+#X obj 826 397 +;
+#X obj 926 383 t b f;
+#X obj 903 429 +;
+#X obj 943 405 t b f;
+#X obj 961 433 t b f;
+#X obj 861 457 +;
+#X obj 861 484 s w-ofst-mod;
+#X obj 579 463 ca-controlVoice 5 3;
+#X msg 332 362 16 20 9 15 16 12 20 11;
+#X obj 37 330 s w-idx-slew;
+#X obj 56 158 vsl 10 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 881 507 +;
+#X obj 881 534 s vel-mod;
+#X obj 971 483 t b f;
+#X msg 288 742 open wave2.6.wav;
+#X obj 289 464 ca-controlVoice 0 3;
+#X obj 438 463 ca-controlVoice 4 1;
+#X msg 792 199 102;
+#X msg 824 198 103;
+#X msg 857 199 113;
+#X msg 793 109 11009;
+#X msg 843 109 11333;
+#X msg 655 109 39959;
+#X msg 655 139 39937;
+#X msg 655 169 33333;
+#X msg 655 199 33302;
+#X msg 655 229 33257;
+#X msg 840 237 18998;
+#X msg 834 278 16074;
+#X msg 660 278 100006;
+#X msg 660 254 100066;
+#X obj 879 704 declare -path wts-subpatches;
+#X obj 331 340 r loads;
+#X text 94 452 note range multiplier;
+#X text 92 474 note offset;
+#X text 92 495 detune in cents;
+#X text 92 430 row of cells;
+#X text 67 407 ca-controlVoice inputs:;
+#X text 9 519 I plan for offset to be controlled by X \, multiplier
+to be controlled by Y;
+#X text 661 52 some cellular automata rules i've stumbled across:;
+#X text 17 13 STEP ONE: LOAD WAVE (you must load in 'arp2600-119.wav'
+\, as it has proper format);
+#X obj 170 31 bng 15 250 50 0 loadwave empty loadwave 17 7 0 10 -4034
+-1 -1;
+#X obj 748 480 r loadwave;
+#X obj 289 565 /~ 8;
+#X obj 381 564 /~ 8;
+#X obj 634 317 r loads;
+#X text 16 51 STEP TWO: start cellular automata sequencer;
+#X obj 328 54 tgl 15 0 seq-go empty empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X text 17 76 STEP THREE: raise volume to your settings;
+#X obj 321 78 hsl 100 12 0 106 0 0 master-volume empty empty -2 -8
+0 10 -232576 -1 -1 8700 1;
+#X text 20 103 STEP FOUR: mess with all these controls \, change CA
+rules \, choose mod sources;
+#X obj 709 359 cnv 15 115 20 empty empty MOD_DESTINATIONS 2 10 0 12
+-232576 -66577 0;
+#X obj 20 134 cnv 15 62 20 empty empty WAVEFORM 2 10 0 12 -232576 -66577
+0;
+#X obj 90 134 cnv 15 24 20 empty empty LFO 2 10 0 12 -232576 -66577
+0;
+#X obj 169 133 cnv 15 66 20 empty empty WAVE_ADSR 2 10 0 12 -232576
+-66577 0;
+#X obj 299 133 cnv 15 66 20 empty empty AMP_ADSR 2 10 0 12 -232576
+-66577 0;
+#X obj 875 741 declare -lib wts-externals;
+#X obj 318 276 vudu.pak4;
+#X obj 196 276 vudu.pak4;
+#X msg 472 511 all \$1;
+#X obj 289 543 clone wavetableVoiceOversamp 8 8;
+#X obj 541 771 s oversample;
+#X obj 542 750 tgl 15 0 empty ovsmp empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 488 493 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 550 515 all \$1;
+#X floatatom 569 490 5 0 0 0 - - -;
+#X msg 13 614 \; numwavs 119 \; tabsize 512 \; alpha 0.09 \; stereo
+1 \; a-atk-sl 50 \; a-sus-sl 1 \; a-rel-sl 50 \; ovsmp 1;
+#X connect 0 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 0 0;
+#X connect 5 1 2 1;
+#X connect 6 0 28 0;
+#X connect 6 1 28 1;
+#X connect 7 0 5 0;
+#X connect 8 0 138 0;
+#X connect 9 0 130 0;
+#X connect 10 0 130 1;
+#X connect 11 0 130 2;
+#X connect 12 0 130 3;
+#X connect 13 0 129 0;
+#X connect 14 0 129 1;
+#X connect 15 0 129 2;
+#X connect 16 0 129 3;
+#X connect 17 0 31 0;
+#X connect 18 0 58 0;
+#X connect 21 0 20 0;
+#X connect 22 0 21 0;
+#X connect 25 1 24 0;
+#X connect 26 0 28 0;
+#X connect 27 0 28 0;
+#X connect 33 0 35 0;
+#X connect 34 0 55 0;
+#X connect 37 0 87 0;
+#X connect 37 1 65 0;
+#X connect 37 2 88 0;
+#X connect 37 3 79 0;
+#X connect 37 4 66 0;
+#X connect 38 0 39 0;
+#X connect 39 0 37 1;
+#X connect 40 0 41 0;
+#X connect 41 0 37 0;
+#X connect 42 0 60 0;
+#X connect 43 0 87 1;
+#X connect 44 0 87 2;
+#X connect 45 0 88 1;
+#X connect 46 0 88 2;
+#X connect 47 0 79 1;
+#X connect 48 0 79 2;
+#X connect 49 0 41 1;
+#X connect 50 0 39 0;
+#X connect 51 0 39 0;
+#X connect 52 0 39 0;
+#X connect 53 0 39 0;
+#X connect 54 0 39 0;
+#X connect 55 0 36 0;
+#X connect 57 0 132 0;
+#X connect 58 0 32 0;
+#X connect 59 0 87 3;
+#X connect 60 0 24 0;
+#X connect 61 0 79 3;
+#X connect 62 0 39 0;
+#X connect 63 0 64 0;
+#X connect 65 0 67 0;
+#X connect 66 0 70 0;
+#X connect 67 0 72 0;
+#X connect 67 1 74 0;
+#X connect 67 2 77 0;
+#X connect 67 3 83 0;
+#X connect 70 0 73 0;
+#X connect 70 1 75 0;
+#X connect 70 2 76 0;
+#X connect 70 3 85 0;
+#X connect 71 0 43 0;
+#X connect 71 1 44 0;
+#X connect 71 2 59 0;
+#X connect 71 3 45 0;
+#X connect 71 4 46 0;
+#X connect 71 5 47 0;
+#X connect 71 6 48 0;
+#X connect 71 7 61 0;
+#X connect 72 0 68 0;
+#X connect 73 0 72 0;
+#X connect 73 1 72 1;
+#X connect 74 0 69 0;
+#X connect 75 0 74 0;
+#X connect 75 1 74 1;
+#X connect 76 0 77 0;
+#X connect 76 1 77 1;
+#X connect 77 0 78 0;
+#X connect 79 0 57 0;
+#X connect 79 1 132 1;
+#X connect 80 0 71 0;
+#X connect 82 0 81 0;
+#X connect 83 0 84 0;
+#X connect 85 0 83 0;
+#X connect 85 1 83 1;
+#X connect 86 0 28 0;
+#X connect 87 0 57 0;
+#X connect 87 1 132 1;
+#X connect 88 0 57 0;
+#X connect 88 1 132 1;
+#X connect 89 0 39 0;
+#X connect 90 0 39 0;
+#X connect 91 0 39 0;
+#X connect 92 0 39 0;
+#X connect 93 0 39 0;
+#X connect 94 0 39 0;
+#X connect 95 0 39 0;
+#X connect 96 0 39 0;
+#X connect 97 0 39 0;
+#X connect 98 0 39 0;
+#X connect 99 0 39 0;
+#X connect 100 0 39 0;
+#X connect 101 0 39 0;
+#X connect 102 0 39 0;
+#X connect 104 0 80 0;
+#X connect 114 0 7 0;
+#X connect 115 0 6 0;
+#X connect 116 0 6 1;
+#X connect 117 0 97 0;
+#X connect 129 0 30 0;
+#X connect 130 0 29 0;
+#X connect 131 0 132 0;
+#X connect 132 0 115 0;
+#X connect 132 1 116 0;
+#X connect 134 0 133 0;
+#X connect 135 0 131 0;
+#X connect 136 0 132 1;
+#X connect 137 0 136 0;
