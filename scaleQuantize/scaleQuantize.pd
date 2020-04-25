@@ -1,0 +1,55 @@
+#N canvas 572 452 1061 494 10;
+#X obj 404 304 text get scale;
+#X obj 478 139 text size scale;
+#X obj 404 277 mod;
+#X obj 364 122 - 1;
+#X text 431 277 get pitch class;
+#X obj 290 266 /;
+#X obj 290 287 expr floor($f1);
+#X obj 288 350 *;
+#X obj 585 185 text get scale;
+#X obj 585 162 - 1;
+#X floatatom 585 206 5 0 0 0 - - #0_period;
+#X obj 303 325 r \$0_period;
+#X text 617 203 the 'period' \, or interval at which the scale repeats
+(in 'normal' scales this would be the octave);
+#X obj 393 402 expr ($f1 + $f2) * 0.01;
+#X obj 364 73 inlet;
+#X obj 392 456 outlet;
+#X obj 364 97 int;
+#X text 27 122 to allow for non-octaval scales \, the first scale degree
+(which is always 0 cents) is ommitted in my scale formatting. so the
+-1 is necessary to refer to the last scale degree (where the scale
+repeats anyway);
+#X obj 478 96 inlet;
+#X obj 478 117 route updated;
+#X obj 478 162 t b f b f;
+#X obj 522 63 loadbang;
+#X msg 522 87 updated;
+#X text 6 7 REQUIRES [text define scale] WITH READ SCALE TO REFER TO
+\, and you should connect its right outlet to the right inlet of [scaleQuantize]
+so this willread properly;
+#X text 53 72 think of this inlet as indexing the scale you made.;
+#X connect 0 0 13 1;
+#X connect 1 0 9 0;
+#X connect 1 0 20 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 3 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 13 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 11 0 7 1;
+#X connect 13 0 15 0;
+#X connect 14 0 16 0;
+#X connect 16 0 3 0;
+#X connect 18 0 19 0;
+#X connect 19 0 1 0;
+#X connect 20 0 5 0;
+#X connect 20 1 5 1;
+#X connect 20 2 2 0;
+#X connect 20 3 2 1;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;
