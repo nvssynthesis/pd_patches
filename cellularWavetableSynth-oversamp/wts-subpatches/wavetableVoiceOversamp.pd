@@ -43,7 +43,7 @@
 #X obj 240 134 * 1;
 #X obj 372 57 expr 1 + $f1 * $f1 * 5;
 #X obj 129 162 r w-ofst-mod;
-#X obj 30 220 expr $f1 + $f2 * \$1 + $f3;
+#X obj 30 217 expr $f1 + $f2 * \$1 + $f3;
 #X obj 129 186 t b f;
 #X floatatom 156 70 5 0 0 0 - - -;
 #X obj 225 166 vudu.f-adsr;
